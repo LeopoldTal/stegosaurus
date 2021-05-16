@@ -4,9 +4,10 @@ def bytes_to_bits(b):
 	return [ byte >> k & 1 for byte in b for k in range(BITS_PER_BYTE - 1, -1, -1) ]
 
 def secret_to_bits(secret):
+	secret = bytes(secret, 'utf-8')
 	secret_size_in_bytes = len(secret)
 	header = [ secret_size_in_bytes >> k & 1 for k in range(HEADER_SIZE_IN_BITS - 1, -1, -1) ]
-	return header + bytes_to_bits(bytes(secret, 'utf-8'))
+	return header + bytes_to_bits(secret)
 
 def group_bits(l):
 	padded = l + [0] * (-len(l) % 3)
