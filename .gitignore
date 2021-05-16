@@ -1,0 +1,4 @@
+__pycache__
+.pytest_cache
+Thumbs.db
+.DS_Store
